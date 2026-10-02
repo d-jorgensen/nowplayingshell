@@ -17,10 +17,10 @@ while true; do
     art=$(dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.freedesktop.DBus.Properties.Get string:'org.mpris.MediaPlayer2.Player' string:'Metadata' | egrep -A 1 "artUrl" | egrep -v "artUrl" | cut -b 44- | cut -d '"' -f 1 | egrep -v ^$)
 
     clear
-    printf "%-10s %b%-30s\n" " " "\e[1;31m$status\e[0m\n"
-    printf "%-10s %b%-30s\n" "Artist:" "\e[1;36m$artist\e[0m"
-    printf "%-10s %b%-30s\n" "Album:" "\e[1;36m$album\e[0m"
-    printf "%-10s %b%-30s\n" "Title:" "\e[1;36m$title\e[0m"
+    printf "%-8s %b%-20s\n" " " "\e[1;31m$status\e[0m\n"
+    printf "%-8s %b%-20s\n" "Artist:" "\e[1;36m$artist\e[0m"
+    printf "%-8s %b%-20s\n" "Album:" "\e[1;36m$album\e[0m"
+    printf "%-8s %b%-20s\n" "Title:" "\e[1;36m$title\e[0m"
     curl -sL "$art" | kitty +kitten icat --place 20x20@28x0 --fit both
   fi
 
