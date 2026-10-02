@@ -1,5 +1,5 @@
-# spotifyshell
-A simple now playing spotify card for kitty
+# nowplayingshell
+A simple now playing spotify/feishin card for kitty
 
 
 ### Details
