@@ -1,6 +1,9 @@
 #!/bin/bash
 title2=" "
 status2= " "
+B_RED=$'\033[1;31m'
+B_CYAN=$'\033[1;36m'
+RESET=$'\033[0m'
 
 while true; do
   # if spotify is started
@@ -17,10 +20,11 @@ while true; do
     art=$(dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.freedesktop.DBus.Properties.Get string:'org.mpris.MediaPlayer2.Player' string:'Metadata' | egrep -A 1 "artUrl" | egrep -v "artUrl" | cut -b 44- | cut -d '"' -f 1 | egrep -v ^$)
 
     clear
-    printf "%-8s %b%-20s\n" " " "\e[1;31m$status\e[0m\n"
-    printf "%-8s %b%-20s\n" "Artist:" "\e[1;36m$artist\e[0m"
-    printf "%-8s %b%-20s\n" "Album:" "\e[1;36m$album\e[0m"
-    printf "%-8s %b%-20s\n" "Title:" "\e[1;36m$title\e[0m"
+    printf "\n\n\n"
+    printf "%-8s ${B_RED}%18.18s${RESET}\n" " " "$status"
+    printf "%-8s ${B_CYAN}%18.18s${RESET}\n" "Artist:" "$artist"
+    printf "%-8s ${B_CYAN}%18.18s${RESET}\n" "Album:" "$album"
+    printf "%-8s ${B_CYAN}%18.18s${RESET}\n" "Title:" "$title"
     curl -sL "$art" | kitty +kitten icat --place 20x20@28x0 --fit both
   fi
 
