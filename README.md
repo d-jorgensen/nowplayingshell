@@ -13,3 +13,5 @@ album art
 long titles and names will get trimmed
 
 playing concurrent songs with the same title will not update the card
+
+witch house artist names with unicode are fun
